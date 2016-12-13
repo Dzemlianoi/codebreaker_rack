@@ -14,22 +14,23 @@ class Racker
   end
 
   def response
-    @game = Codebreaker::Game.new
     case @request.path
       when '/'
         intro if first_play?
       when '/options'
-        return set_options unless @request.params['name'].nil?
+        @game = Codebreaker::Game.new
         @subtemplate = 'templates/options.html.erb'
         Rack::Response.new(render('intro.html.erb'))
       when '/game'
-        Rack::Response.new(@request.cookies['game'])
+        return Rack::response.new{|redirect| redirect.redirect('/options')} if @request.params['name'].nil?
+        @subtemplate = 'templates/game.html.erb'
+        Rack::Response.new(render('intro.html.erb'))
       else
         Rack::Response.new('Not Found', 404)
     end
   end
 
-  def set_options
+  def game_options
     name = @request.params['name']
     difficulty = @request.params['difficulty']
     options = @game.asign_game_options(name, difficulty)
@@ -46,6 +47,11 @@ class Racker
 
   def first_play?
     true
+  end
+
+  def asign_options
+    @options = JSON.parse(@request['params'])
+    @game.asign_start_game_options
   end
 
   def render(template)
