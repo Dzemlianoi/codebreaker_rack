@@ -1,0 +1,70 @@
+<h1 class="white-font text-center">Make you guess, Denis</h1>
+
+<div class = "quess-form center-block">
+  <form action="/operation_result" class="form">
+    <input type="text" class="form-control" name="code" id="code" autofocus>
+    <div class= "guess-btns text-center">
+      <button type="button" class="btn btn-primary">Try</button>
+      <button type="button" class="btn btn-warning">Hint!(3 left)</button>
+    </div>
+    <div class="help-block with-errors"></div>
+  </form>
+</div>
+
+
+<div class = "results">
+  <div class="game-block attempts-block">
+    <h2>Code inputs</h2>
+    <div class="attempts-list">
+      <ol>
+        <li class="completed">1234</li>
+        <li class="completed">1234</li>
+        <li class="active">1234</li>
+        <li>****</li>
+        <li>****</li>
+        <li>****</li>
+        <li>****</li>
+        <li>****</li>
+        <li>****</li>
+        <li>****</li>
+        <li>****</li>
+        <li>****</li>
+        <li>****</li>
+        <li>****</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="game-block attempts-results block">
+    <h2>Code results</h2>
+    <div class="attempts-result-list">
+      <ol>
+        <li class="completed">++--</li>
+        <li class="completed">++-</li>
+        <li class="active">--++</li>
+        <li>****</li>
+        <li>****</li>
+        <li>****</li>
+        <li>****</li>
+        <li>****</li>
+        <li>****</li>
+        <li>****</li>
+        <li>****</li>
+        <li>****</li>
+        <li>****</li>
+        <li>****</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="game-block hints-block">
+    <h2>Hints</h2>
+    <div class="attempts-list">
+      <ol>
+        <li>One of the digit: 1</li>
+        <li>One of the digit: 2</li>
+        <li>One of the digit: 3</li>
+      </ol>
+    </div>
+  </div>
+</div>

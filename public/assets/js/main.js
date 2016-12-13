@@ -1,19 +1,32 @@
 var App = {
 
+    error_message:'',
+
     init: function () {
         App.disabling();
-        $('.next-options').click(this.submitName);
+        $('.next-options').click(this.checkOptions);
+        $('.form-options').submit(this.submitOptions);
     },
 
     disabling: function () {
         $('.next-options').off('click');
     },
 
-    submitName:function(){
-        if (App.checkName() == 'ok'){
-            $('.name-group').fadeOut( "slow", function() {
-                $('.diff-group').fadeIn('slow',function(){});
-            });
+    checkOptions:function(){
+        if (App.checkName()) {
+            App.normaliseInput();
+            if ($('.name-group').css('display') != 'none'){
+                $('.name-group').fadeOut("slow", function () {
+                    $('.diff-group').fadeIn('slow', function () {
+
+                        return false;
+                    });
+                });
+            }else{
+                return true;
+            }
+        }else{
+            App.wrongInput();
         }
     },
 
@@ -21,13 +34,35 @@ var App = {
         var input = $('#name').val();
         switch (true){
             case input.length < 3 || input.length > 20:
-                var message = 'Name should consists from 3-20 letters';
+                App.error_message = 'Name should consists from 3-20 letters';
                 break;
             case !/^[A-Za-z0-9]*$/.test(input):
-                var message = 'Name should consists from letters or numbers';
+                App.error_message = 'Name should consists from letters or numbers';
                 break;
+            default:
+                App.error_message = '';
         }
-        return typeof(message) == undefined ? message : 'ok';
+
+        return this.error_message == '' ;
+    },
+
+    wrongInput: function(){
+        $('.name-group').addClass('has-error has-danger');
+        $('.help-block').text(App.error_message)
+    },
+
+    normaliseInput:function(){
+        $('.name-group').removeClass('has-error has-danger');
+        $('.help-block').text('');
+
+    },
+
+    submitOptions: function(event){
+        event.preventDefault();
+        if (App.checkOptions()){
+            $(this).unbind('submit').submit();
+        }
+
     }
 
 };

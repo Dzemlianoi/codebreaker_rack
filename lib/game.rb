@@ -1,13 +1,13 @@
 module Codebreaker
   class Game
     attr_accessor :current_code, :secret_code, :difficulties, :difficulty,
-                  :attempts_left, :hints_left, :hint_code_digits, :name
+                  :attempts_left, :hints_left, :hint_code_digits, :name, :attempts_array
 
     def initialize
       self.difficulties = Loader.load('difficulties')
     end
 
-    def asign_game_options (name, difficulty)
+    def asign_start_game_options (name, difficulty)
       self.name = name
       self.difficulty= difficulty.to_sym
       self.hints_left = difficulty_info[:hints]
