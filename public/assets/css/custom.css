@@ -1,0 +1,54 @@
+body{
+    background: url("/assets/images/back.png") no-repeat;
+    -moz-background-size: 100%;
+    -webkit-background-size: 100%;
+    -o-background-size: 100%;
+    background-size: 100%;
+}
+.wrapper{
+    min-width:900px;
+    padding:30px;
+}
+.info-box{
+    padding-top:45px;
+    text-align: center;
+    font-size:35px;
+    color:white;
+    font-weight:bold;
+}
+.info-box div{
+    margin-bottom:10px;
+}
+.info-box a{
+    margin-top:40px;
+    padding:7px 65px;
+    font-size:25px;
+}
+.form-options{
+    width:40%;
+    padding-top:125px;
+    text-align: center;
+    position: relative;
+}
+.form-options label{
+    color:whitesmoke;
+    font-size:42px;
+}
+.form-options input, .form-options select{
+    display:inline-block;
+}
+.form-options button{
+    padding:7px 50px;
+    margin-top: 20px;
+}
+.form-options input, .form-options select{
+    width:60%;
+}
+
+.non-display{
+    display:none;
+}
+
+.diff-group button{
+    display: inline-block;
+}
