@@ -1,11 +1,11 @@
 <h1 class="white-font text-center">Make you guess, Denis</h1>
 
 <div class = "quess-form center-block">
-  <form action="/operation_result" class="form">
+  <form action="/guess" class="form">
     <input type="text" class="form-control" name="code" id="code" autofocus>
     <div class= "guess-btns text-center">
-      <button type="button" class="btn btn-primary">Try</button>
-      <button type="button" class="btn btn-warning">Hint!(3 left)</button>
+      <button type="submit" class="btn btn-primary">Try</button>
+      <a href = "/hint" class="btn btn-warning">Hint!</a>
     </div>
     <div class="help-block with-errors"></div>
   </form>
@@ -17,20 +17,14 @@
     <h2>Code inputs</h2>
     <div class="attempts-list">
       <ol>
-        <li class="completed">1234</li>
-        <li class="completed">1234</li>
-        <li class="active">1234</li>
-        <li>****</li>
-        <li>****</li>
-        <li>****</li>
-        <li>****</li>
-        <li>****</li>
-        <li>****</li>
-        <li>****</li>
-        <li>****</li>
-        <li>****</li>
-        <li>****</li>
-        <li>****</li>
+        <% @game.attempts_array.each  do |attempt|  %>
+            <li class="completed"><%= attempt %></li>
+        <% end %>
+
+        <% @game.attempts_left.to_i.times do  %>
+          <li>****</li>
+        <% end %>
+        <li><%= @game.secret_code%></li>
       </ol>
     </div>
   </div>
@@ -39,20 +33,12 @@
     <h2>Code results</h2>
     <div class="attempts-result-list">
       <ol>
-        <li class="completed">++--</li>
-        <li class="completed">++-</li>
-        <li class="active">--++</li>
-        <li>****</li>
-        <li>****</li>
-        <li>****</li>
-        <li>****</li>
-        <li>****</li>
-        <li>****</li>
-        <li>****</li>
-        <li>****</li>
-        <li>****</li>
-        <li>****</li>
-        <li>****</li>
+        <% @game.attempts_array.each  do |attempt|  %>
+            <li class="completed"><%= @game.marking_result(attempt) %></li>
+        <% end %>
+        <% @game.attempts_left.to_i.times do  %>
+            <li>****</li>
+        <% end %>
       </ol>
     </div>
   </div>
@@ -61,9 +47,13 @@
     <h2>Hints</h2>
     <div class="attempts-list">
       <ol>
-        <li>One of the digit: 1</li>
-        <li>One of the digit: 2</li>
-        <li>One of the digit: 3</li>
+        <% @game.hints_array.each  do |hint|  %>
+            <li>One of the digit: <%= hint %></li>
+        <% end %>
+
+        <% @game.hints_left.to_i.times do  %>
+            <li>No used hint</li>
+        <% end %>
       </ol>
     </div>
   </div>
