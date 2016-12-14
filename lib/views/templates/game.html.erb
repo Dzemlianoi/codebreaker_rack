@@ -1,11 +1,12 @@
 <h1 class="white-font text-center">Make you guess, Denis</h1>
 
 <div class = "quess-form center-block">
-  <form action="/guess" class="form">
+  <form method = "POST" action="/guess" class="form">
     <input type="text" class="form-control" name="code" id="code" autofocus>
     <div class= "guess-btns text-center">
       <button type="submit" class="btn btn-primary">Try</button>
       <a href = "/hint" class="btn btn-warning">Hint!</a>
+      <a href="/restart" class="btn btn-success">Restart game</a>
     </div>
     <div class="help-block with-errors"></div>
   </form>
@@ -24,7 +25,7 @@
         <% @game.attempts_left.to_i.times do  %>
           <li>****</li>
         <% end %>
-        <li><%= @game.secret_code%></li>
+        <!--<li><%= @game.secret_code%></li>-->
       </ol>
     </div>
   </div>
