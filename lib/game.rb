@@ -48,18 +48,12 @@ module Codebreaker
       @current_code == @secret_code
     end
 
-    def to_h
-      {
-          name: @name,
-          difficulty: @difficulty,
-          attempts_left: @attempts_left,
-          hints_left: @hints_left,
-          secret_code: @secret_code,
-          hints_array: @hints_array,
-          attempts_array: @attempts_array,
-          hint_code_digits: @hint_code_digits
+    def loose?
+      @attempts_left < 0
+    end
 
-      }
+    def last_chance
+      @attempts_left == 1
     end
 
     def difficulty_info
@@ -86,6 +80,20 @@ module Codebreaker
       answer
     end
 
+    def to_h
+      {
+          name: @name,
+          difficulty: @difficulty,
+          attempts_left: @attempts_left,
+          hints_left: @hints_left,
+          secret_code: @secret_code,
+          hints_array: @hints_array,
+          attempts_array: @attempts_array,
+          hint_code_digits: @hint_code_digits
+
+      }
+    end
+
     private
 
     def generate_secret_code
@@ -94,10 +102,6 @@ module Codebreaker
 
     def get_hint_digit
       @hint_code_digits.slice!(rand(@hint_code_digits.size))
-    end
-
-    def attempts_left?
-      @attempts_left > 0
     end
   end
 end
