@@ -16,29 +16,20 @@ module CodebreakerWeb
 
     def response
       case @request.path
-        when '/'
-          render_with_template('main')
+        when '/'  then render_with_template('main')
         when '/options'
           @difficulties = ::Codebreaker::Loader.load('difficulties')
           render_with_template('options')
-        when '/confirm_settings'
-          confirm_settings
-        when '/game'
-          render_with_template('game')
-        when '/hint'
-          hint
-        when '/guess'
-          guess
-        when '/win'
-          render_with_template('win')
-        when '/loose'
-          render_with_template('loose')
-        when '/save'
-          save_result
-        when '/restart'
-          restart
-        else
-          Rack::Response.new('Not Found', 404)
+        when '/confirm_settings' then confirm_settings
+        when '/game' then render_with_template('game')
+        when '/hint'  then hint
+        when '/guess' then guess
+        when '/win'  then render_with_template('win')
+        when '/loose' then render_with_template('loose')
+        when '/save'  then save_result
+        when '/stats' then stats
+        when '/restart' then restart
+        else Rack::Response.new('Not Found', 404)
       end
     end
 
@@ -63,8 +54,16 @@ module CodebreakerWeb
     end
 
     def save_result
-      ::Codebreaker::Loader.save('stats', game.to_h)
+      @stats = ::Codebreaker::Loader.load('stats')
+      @stats.push(game.to_h)
+      ::Codebreaker::Loader.save('stats', @stats)
       restart
+    end
+
+    def stats
+      @stats = ::Codebreaker::Loader.load('stats')
+      return render_with_template('no_stats') if @stats.empty?
+      render_with_template('stats')
     end
 
     private

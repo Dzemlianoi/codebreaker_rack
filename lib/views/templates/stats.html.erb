@@ -1,0 +1,26 @@
+<table class="table stats-table">
+  <thead>
+    <tr>
+      <th>№</th>
+      <th>Name</th>
+      <th>Difficulty</th>
+      <th>Attempts left</th>
+      <th>Hints left</th>
+      <th>Secret code</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @stats.each_with_index do |game, index| %>
+  <% puts game.inspect %>
+      <tr>
+        <td><%= index+1 %></td>
+        <td><%= game[:name] %></td>
+        <td><%= game[:difficulty] %></td>
+        <td><%= game[:attempts_left] %></td>
+        <td><%= game[:hints_left] %></td>
+        <td><%= game[:secret_code] %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+<a href="/" class="center-block back-btn btn btn-primary"><i class="glyphicon glyphicon-arrow-left"></i> Back </a>
