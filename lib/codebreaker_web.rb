@@ -34,7 +34,7 @@ module CodebreakerWeb
         when '/loose'
           render_with_template('loose')
         when '/save'
-          protected_game_actions('save_result')
+          save_result
         when '/restart'
           restart
         else

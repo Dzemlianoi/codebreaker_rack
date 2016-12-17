@@ -1,14 +1,16 @@
 <h1 class="white-font text-center">Make you guess, Denis</h1>
 
-<div class = "quess-form center-block">
+<div class = "guess-form center-block">
   <form method = "POST" action="/guess" class="form">
-    <input type="text" class="form-control" name="code" id="code" autofocus>
-    <div class= "guess-btns text-center">
-      <button type="submit" class="btn btn-primary">Try</button>
-      <a href = "/hint" class="btn btn-warning">Hint!</a>
-      <a href="/restart" class="btn btn-success">Restart game</a>
+    <div class="guess-block">
+      <input type="text" class="form-control" name="code" id="code" autofocus>
+      <div class="help-block with-errors"></div>
+      <div class= "guess-btns text-center">
+        <button type="submit" class="btn btn-primary">Try</button>
+        <a href = "/hint" class="btn btn-warning">Hint!</a>
+        <a href="/restart" class="btn btn-success">Restart game</a>
+      </div>
     </div>
-    <div class="help-block with-errors"></div>
   </form>
 </div>
 

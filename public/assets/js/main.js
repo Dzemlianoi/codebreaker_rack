@@ -6,6 +6,7 @@ var App = {
         App.disabling();
         $('.next-options').click(this.checkOptions);
         $('.form-options').submit(this.submitOptions);
+        $('.guess-form').submit(this.submitGuess);
     },
 
     disabling: function () {
@@ -14,11 +15,10 @@ var App = {
 
     checkOptions:function(){
         if (App.checkName()) {
-            App.normaliseInput();
+            App.normaliseInput('name-group', '.help-block');
             if ($('.name-group').css('display') != 'none'){
                 $('.name-group').fadeOut("slow", function () {
                     $('.diff-group').fadeIn('slow', function () {
-
                         return false;
                     });
                 });
@@ -26,7 +26,7 @@ var App = {
                 return true;
             }
         }else{
-            App.wrongInput();
+            App.wrongInput('.name-group', '.help-block');
         }
     },
 
@@ -42,19 +42,21 @@ var App = {
             default:
                 App.error_message = '';
         }
-
-        return this.error_message == '' ;
+        return App.error_message == '' ;
     },
 
-    wrongInput: function(){
-        $('.name-group').addClass('has-error has-danger');
-        $('.help-block').text(App.error_message)
+    checkGuess: function () {
+        return /^[0-6]{4}$/.test($('#code').val());
     },
 
-    normaliseInput:function(){
-        $('.name-group').removeClass('has-error has-danger');
-        $('.help-block').text('');
+    wrongInput: function(text_block, message){
+        $(text_block).addClass('has-error has-danger');
+        $(message).text(App.error_message)
+    },
 
+    normaliseInput:function(text_block, message){
+        $(text_block).removeClass('has-error has-danger');
+        $(message).text('');
     },
 
     submitOptions: function(event){
@@ -62,9 +64,18 @@ var App = {
         if (App.checkOptions()){
             $(this).unbind('submit').submit();
         }
+    },
 
+    submitGuess:function(event){
+        event.preventDefault();
+        if (App.checkGuess()){
+            $(this).unbind('submit').submit();
+        }else{
+            $('#code').val('');
+            App.error_message = 'Code must have 4 digits and numbers from 0-6';
+            App.wrongInput('.guess-block', '.help-block')
+        }
     }
-
 };
 
 App.init();
