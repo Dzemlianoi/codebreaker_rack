@@ -37,7 +37,7 @@ var App = {
             case input.length < 3 || input.length > 20:
                 App.error_message = 'Name should consists from 3-20 letters';
                 break;
-            case !/^[A-Za-z0-9]*$/.test(input):
+            case !/^[A-Za-zа-яА-Я0-9]*$/.test(input):
                 App.error_message = 'Name should consists from letters or numbers';
                 break;
             default:
