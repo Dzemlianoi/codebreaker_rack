@@ -17,3 +17,17 @@
   :attempts_array:
   - '2345'
   :hint_code_digits: '5162'
+- :name: denis
+  :difficulty: :easy
+  :attempts_left: 9
+  :hints_left: 3
+  :secret_code: '5233'
+  :hints_array: []
+  :attempts_array:
+  - '1234'
+  - '1234'
+  - '1234'
+  - '1234'
+  - '1234'
+  - '1233'
+  :hint_code_digits: '5233'

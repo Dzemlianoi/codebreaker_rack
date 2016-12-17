@@ -11,6 +11,7 @@ var App = {
 
     disabling: function () {
         $('.next-options').off('click');
+        $('.guess-form').off('submit');
     },
 
     checkOptions:function(){
@@ -66,14 +67,14 @@ var App = {
         }
     },
 
-    submitGuess:function(event){
-        event.preventDefault();
+    submitGuess:function(e){
         if (App.checkGuess()){
-            $(this).unbind('submit').submit();
+            return true;
         }else{
             $('#code').val('');
             App.error_message = 'Code must have 4 digits and numbers from 0-6';
-            App.wrongInput('.guess-block', '.help-block')
+            App.wrongInput('.guess-block', '.help-block');
+            return false;
         }
     }
 };
