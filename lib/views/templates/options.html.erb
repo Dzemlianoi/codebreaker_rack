@@ -1,4 +1,4 @@
-<form action ='/confirm_options' method = "POST" class="form center-block form-options">
+<form action ='/confirm_settings' method = "POST" class="form center-block form-options">
   <div class="form-group name-group">
     <label for="name">Enter your name</label>
     <input type="text" class="form-control" name="name" id="name" placeholder="Jane Doe" autofocus>
@@ -8,7 +8,7 @@
   <div class="form-group diff-group non-display">
     <label for="difficulties">Choose the difficulty</label>
     <select name = "difficulty" class="form-control center-block" id="difficulties">
-      <% @game.difficulties.each do |difficulty, details|  %>
+      <% @difficulties.each do |difficulty, details|  %>
           <option value="<%= difficulty %>"><%= difficulty %> - <%= details[:attempts] %> attempts - <%= details[:hints] %> hints </option>
       <% end %>
     </select>

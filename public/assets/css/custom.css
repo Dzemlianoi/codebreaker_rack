@@ -143,6 +143,12 @@ body{
     display: inline-block;
     vertical-align: middle;
 }
+
+.game-results .result-secret{
+    font-size:45px;
+    vertical-align: middle;
+}
+
 .game-results a{
     margin: 0 20px;
     width: 150px;

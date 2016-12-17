@@ -18,14 +18,14 @@
     <h2>Code inputs</h2>
     <div class="attempts-list">
       <ol>
-        <% @game.attempts_array.each  do |attempt|  %>
+        <% game.attempts_array.each  do |attempt|  %>
             <li class="completed"><%= attempt %></li>
         <% end %>
 
-        <% @game.attempts_left.to_i.times do  %>
+        <% game.attempts_left.to_i.times do  %>
           <li>****</li>
         <% end %>
-        <!--<li><%= @game.secret_code%></li>-->
+        <li><%= game.secret_code%></li>
       </ol>
     </div>
   </div>
@@ -34,10 +34,10 @@
     <h2>Code results</h2>
     <div class="attempts-result-list">
       <ol>
-        <% @game.attempts_array.each  do |attempt|  %>
-            <li class="completed"><%= @game.marking_result(attempt) %></li>
+        <% game.attempts_array.each  do |attempt|  %>
+            <li class="completed"><%= game.marking_result(attempt) %></li>
         <% end %>
-        <% @game.attempts_left.to_i.times do  %>
+        <% game.attempts_left.to_i.times do  %>
             <li>****</li>
         <% end %>
       </ol>
@@ -48,11 +48,11 @@
     <h2>Hints</h2>
     <div class="attempts-list">
       <ol>
-        <% @game.hints_array.each  do |hint|  %>
+        <% game.hints_array.each  do |hint|  %>
             <li>One of the digit: <%= hint %></li>
         <% end %>
 
-        <% @game.hints_left.to_i.times do  %>
+        <% game.hints_left.to_i.times do  %>
             <li>No used hint</li>
         <% end %>
       </ol>
