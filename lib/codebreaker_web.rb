@@ -1,4 +1,4 @@
-require "codebreaker_web/version"
+require 'codebreaker_web/version'
 require 'codebreaker'
 require 'erb'
 require 'json'
@@ -47,9 +47,9 @@ module CodebreakerWeb
     end
 
     def guess
-      redirect('win') if game.win?(@request.params['code'])
+      return redirect('win') if game.win?(@request.params['code'])
       game.code_operations @request.params['code']
-      redirect('loose')  if game.loose?
+      return redirect('loose')  if game.loose?
       redirect('game')
     end
 
