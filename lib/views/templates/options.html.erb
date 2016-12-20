@@ -1,0 +1,67 @@
+<form action ='/confirm_settings' method = "POST" class="form center-block form-options">
+  <div class="form-group name-group">
+    <label for="name">Enter your name</label>
+    <input type="text" class="form-control" name="name" id="name" placeholder="Myname" autofocus>
+    <div class="help-block with-errors"></div>
+    <button type="button" class="center-block btn btn-primary next-options">Next</button>
+  </div>
+  <div class="form-group diff-group non-display">
+    <label for="difficulties">Choose the difficulty</label>
+    <select name = "difficulty" class="form-control center-block" id="difficulties">
+      <% @difficulties.each do |difficulty, details|  %>
+          <option value="<%= difficulty %>"><%= difficulty %> - <%= details[:attempts] %> attempts - <%= details[:hints] %> hints </option>
+      <% end %>
+    </select>
+    <div>
+      <button type="button" data-toggle="modal" data-target="#myModal" class="center-block btn btn-primary rules-show">Rules</button>
+      <button type="submit" class="center-block btn btn-warning">Go!</button>
+    </div>
+  </div>
+</form>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Rules</h4>
+      </div>
+      <div class="modal-body">
+        When the game starts, we generate a <b>secret code.</b><br/><br/>
+
+        This <b>secret code</b>:<br/>
+        - consists from <b>4</b> digits;<br/>
+        - contains numbers from <b>0-6</b>;<br/><br/>
+
+        Your aim is to guess this secret code!<br/>
+        You will have some <b>attempts</b> and some <b>hints</b> for guessing.<br/>
+        Quantity of both of them depends on <b>difficulty</b> you choose now.<br/><br/>
+
+        <b>Guessing</b><br/>
+        - You guess right number(digit) and right position of the number in the code - you get "<b>+</b>";<br/>
+        - You guess right number(digit) and wrong position - you get "<b>-</b>";<br/>
+        - You don't guess right digit - you get "<b>nothing</b>";<br/><br/>
+
+        For example:<br/>
+        <b>Secret code:</b> 1234 <br/>
+        <b>Your guess:</b> 5241<br/>
+        <b>Result:</b> +--<br/>
+        <i>You got 1 plus for "2" 2 minuses for "1" and "4" </i><br/><br/>
+
+
+        Each hint puts you a number at the random digit<br/><br/>
+        <b>Important!</b><br/>
+        Hints give you:<br/>
+        - always different digits!<br>
+        - number at RANDOM digit!<br><br>
+        Let's try?<br/><br/>
+
+        Game proccess will start after the <b>registration</b> options
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

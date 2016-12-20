@@ -1,0 +1,62 @@
+<h1 class="white-font text-center">Make you guess, <%=game.name%></h1>
+
+<div class = "guess-form center-block">
+  <form method = "POST" action="/guess" class="form">
+    <div class="guess-block">
+      <input type="text" autocomplete="off" class="form-control" name="code" id="code" autofocus>
+      <div class="help-block with-errors"></div>
+      <div class= "guess-btns text-center">
+        <button type="submit" class="btn btn-primary">Try</button>
+        <a href = "/hint" class="btn btn-warning">Hint!</a>
+        <a href="/restart" class="btn btn-success">Restart game</a>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+<div class = "results">
+  <div class="game-block attempts-block">
+    <h2>Code inputs</h2>
+    <div class="attempts-list">
+      <ol>
+        <% game.attempts_array.each  do |attempt|  %>
+            <li class="completed"><%= attempt %></li>
+        <% end %>
+
+        <% game.attempts_left.to_i.times do  %>
+          <li>****</li>
+        <% end %>
+      </ol>
+    </div>
+  </div>
+
+  <div class="game-block attempts-results block">
+    <h2>Code results</h2>
+    <div class="attempts-result-list">
+      <ol>
+        <% game.attempts_array.each  do |attempt|  %>
+            <li class="completed"><%= game.marking_result(attempt) %></li>
+        <% end %>
+        <% game.attempts_left.to_i.times do  %>
+            <li>****</li>
+        <% end %>
+      </ol>
+    </div>
+  </div>
+
+  <div class="game-block hints-block">
+    <h2>Hints</h2>
+    <div class="attempts-list">
+      <ol>
+        <% game.hints_array.each  do |hint|  %>
+            <li>One of the digit: <%= hint %></li>
+        <% end %>
+
+        <% game.hints_left.to_i.times do  %>
+            <li>No used hint</li>
+        <% end %>
+      </ol>
+    </div>
+  </div>
+</div>

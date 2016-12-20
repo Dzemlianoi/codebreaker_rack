@@ -1,0 +1,195 @@
+body{
+    background: url("/assets/images/back.png") center center;
+    -moz-background-size: 100%;
+    -webkit-background-size: 100%;
+    -o-background-size: 100%;
+    background-size: 1920px 1080px;
+}
+
+.img-win{
+    background: url("/assets/images/win.png") 100% 100%;
+    display: inline-block;
+    width:145px;
+    height:124px;
+    vertical-align: middle;
+}
+
+.wrapper{
+    padding: 30px;
+}
+
+.info-box{
+    padding-top: 45px;
+    text-align: center;
+    font-size: 35px;
+    color: white;
+    font-weight: bold;
+}
+
+.info-box div{
+    margin-bottom: 10px;
+}
+.info-box a{
+    margin-top: 40px;
+    padding: 7px 65px;
+    font-size: 25px;
+}
+
+.form-options{
+    width: 40%;
+    padding-top: 125px;
+    text-align: center;
+    position: relative;
+}
+
+.form-options label{
+    color: whitesmoke;
+    font-size: 42px;
+}
+
+.form-options input, .form-options select{
+    display: inline-block;
+}
+.form-options button{
+    padding: 7px 50px;
+    margin-top: 20px;
+}
+
+.form-options input, .form-options select{
+    width: 60%;
+}
+
+.non-display{
+    display: none;
+}
+
+.diff-group button{
+    display: inline-block;
+}
+
+.guess-form{
+    width: 75%;
+}
+
+.guess-form input{
+    margin: 40px auto 0;
+    width: 40%;
+    height: 75px;
+    padding: 0 55px;
+    letter-spacing: 30px;
+    font-size: 53px;
+}
+
+.guess-form .guess-block .help-block{
+    text-align: center;
+    font-size:20px;
+}
+
+.guess-form button, .guess-form a{
+    display: inline-block;
+    font-size: 20px;
+    min-width: 100px;
+    padding: 10px 11px;
+    margin-right:40px;
+}
+
+.guess-form .guess-btns{
+    margin: 20px auto 10px;
+}
+
+.white-font{
+    color: white;
+}
+
+.results{
+    min-height: 300px;
+    padding: 20px;
+    text-align: center;
+}
+
+.game-block{
+    padding-left: 15px;
+    vertical-align: top;
+    font-size: 20px;
+    background-color: white;
+    opacity: 0.7;
+    color: black;
+    width: 30%;
+    margin: 0 auto;
+    margin-right: 10px;
+    min-height: 300px;
+    display: inline-block;
+}
+
+.hints-block{
+    min-height: 100px;
+}
+
+.game-block li.completed{
+    color: darkgray;
+    font-style: italic;
+}
+
+.game-block li.active{
+    color: red;
+}
+
+/*Game results*/
+.game-results{
+    text-align: center;
+    padding-top: 40px;
+    color: white;
+}
+.game-results .header{
+    margin: 0 auto 30px;
+}
+.game-results .result-text{
+    font-size: 100px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.game-results .result-secret{
+    font-size:45px;
+    vertical-align: middle;
+}
+
+.game-results a{
+    margin: 0 20px;
+    width: 150px;
+    height: 45px;
+    line-height: 35px;
+}
+.back-game{
+    font-size:14px;
+    font-weight:bold;
+    color:blueviolet !important;
+}
+
+.stats-table{
+    background-color: white;
+    opacity: 0.7;
+    color:black;
+    width:60%;
+    margin:0 auto;
+    font-size:16px;
+}
+.stats-table th{
+    font-size:20px;
+}
+.back-btn{
+    vertical-align: middle;
+    line-height: 27px;
+    margin-top:30px;
+    width:150px;
+    height:40px;
+    font-size: 16px;
+}
+
+.no-stats-text{
+    text-align: center;
+    font-size:44px;
+    color:white;
+    margin-top:110px;
+    font-weight: bold;
+}
