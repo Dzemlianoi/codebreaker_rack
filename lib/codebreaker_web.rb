@@ -47,9 +47,9 @@ module CodebreakerWeb
     end
 
     def guess
-      return redirect('win') if game.win?(@request.params['code'])
+      redirect('win') if game.win?(@request.params['code'])
       game.code_operations @request.params['code']
-      return redirect('loose')  if game.loose?
+      redirect('loose')  if game.loose?
       redirect('game')
     end
 
